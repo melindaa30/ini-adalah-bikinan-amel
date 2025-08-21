@@ -1,4 +1,4 @@
-<?php include '../../config/koneksi.php'; ?>
+<?php include 'koneksi.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,21 +14,25 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Hewan</th>
+                <th>hewan</th>
                 <th>Jenis</th>
-                <th>Jumlah</th>
                 <th>Asal</th>
+                <th>Jumlah</th>
+                <th>Aksi</th>
+
             </tr>
         </thead>
         <tbody>
         <?php 
         $no = 1;
-        $data = mysqli_query($conn, "SELECT * FROM melin");
+        $data = mysqli_query($koneksi, "SELECT * FROM melin");
         while($d = mysqli_fetch_array($data)) {             echo "<tr>
                 <td>{$no}</td>
-                <td>{$d['nama_barang']}</td>
-                <td>{$d['harga']}</td>
-                <td>{$d['stok']}</td>
+                <td>{$d['nama_hewan']}</td>
+                <td>{$d['jenis_hewan']}</td>
+                <td>{$d['asal_hewan']}</td>
+                <td>{$d['jumlah_hewan']}</td>
+
                 <td>
   <a href='edit.php?id=$d[id]' class='btn btn-warning btn-sm'>Edit</a>
                    <a href='hapus.php?id=$d[id]'class='btn btn-danger btn-sm' onclick=\"return confirm('Hapus data?')\">Hapus</a>
@@ -39,7 +43,6 @@
         ?>
         </tbody>
     </table>
-    <a href='../../index.php' class='btn btn-primary'>Kembali</a>
-</div>
+    </div>
 </body>
 </html>
